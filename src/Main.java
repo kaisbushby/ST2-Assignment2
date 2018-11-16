@@ -51,7 +51,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Learns specified language and outputs model
-        learn("Language Text\\English.txt", "Language Model\\EnglishModel.txt");
+        // learn("Language Text\\English.txt", "Language Model\\EnglishModel.txt");
 
         // Learns all languages in the "Language Text Directory"
         learnAll();
