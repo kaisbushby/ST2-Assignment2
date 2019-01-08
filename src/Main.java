@@ -21,8 +21,8 @@ public class Main {
         ArrayList<String> fileNames = Preprocessing.getFileNames("Language Text");
 
         for(String filename : fileNames){
-            String inputFilePath = "Language Text\\" + filename;
-            String outputFilePath = "Language Model\\" + Preprocessing.returnOutputName(filename);
+            String inputFilePath = "Language Text/" + filename;
+            String outputFilePath = "Language Model/" + Preprocessing.returnOutputName(filename);
 
             // Pre-processing
             String fileContent = Preprocessing.readUnicodeFile(inputFilePath);
@@ -42,11 +42,11 @@ public class Main {
     // Detects all the files in Language_Text folder
     static void run(){
         Calculate.initModels();
-        Calculate.detectModel("Language Test\\Unknown1.txt");
-        Calculate.detectModel("Language Test\\Unknown2.txt");
-        Calculate.detectModel("Language Test\\Unknown3.txt");
-        Calculate.detectModel("Language Test\\Unknown4.txt");
-        Calculate.detectModel("Language Test\\Unknown5.txt");
+        Calculate.detectModel("Language Test/Unknown1.txt");
+        Calculate.detectModel("Language Test/Unknown2.txt");
+        Calculate.detectModel("Language Test/Unknown3.txt");
+        Calculate.detectModel("Language Test/Unknown4.txt");
+        Calculate.detectModel("Language Test/Unknown5.txt");
     }
 
     public static void main(String[] args) {
