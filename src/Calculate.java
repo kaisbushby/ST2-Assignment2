@@ -39,7 +39,7 @@ class Calculate{
 
         int counter = 0;
         for(String model : modelList){
-            probabilityText = Preprocessing.readFile("Language Model\\" + model);
+            probabilityText = Preprocessing.readFile("Language Model/" + model);
             readModels(hashModels.get(counter), probabilityText);
 
             counter++;
