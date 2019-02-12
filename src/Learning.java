@@ -1,7 +1,10 @@
 import java.util.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-
+/**
+ * This class will handle the learning process of the model.
+ * It will calculate the probability of the occurring character pairs and stores it into a file
+ * **/
 
 public class Learning{
     //

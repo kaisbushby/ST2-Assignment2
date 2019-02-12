@@ -2,6 +2,11 @@ import java.util.*;
 import java.io.*;
 import java.text.*;
 import java.nio.charset.StandardCharsets;
+/**
+ * This section will contain functions that handles pre-processing such as reading files,
+ * extracting words, removing unwanted symbols and extracting pairs of Characters
+ *
+ * **/
 
 
 public class Preprocessing{
@@ -59,7 +64,7 @@ public class Preprocessing{
     }
 
     // Reads File in Locale format
-    // and creates an array holding each word
+    // and creates an array with each word stored
     public static ArrayList<String> extractWords(String inputText, Locale currentLocale){
         ArrayList<String> wordList = new ArrayList<String>();
         BreakIterator wordIterator = BreakIterator.getWordInstance(currentLocale);
@@ -68,13 +73,17 @@ public class Preprocessing{
         int start = wordIterator.first();
         int end = wordIterator.next();
 
+        // changes letters to lower case and removes unwanted symbolic characters
         //--------------------------------------------------------------------------------------------
         while (end != BreakIterator.DONE) {
             String word = inputText.substring(start, end);
             word = word.toLowerCase();
+            // Removes white spaces and symbolic characters
             if (Character.isLetter(word.charAt(0)) && word.length() > 1) {
                 wordList.add(word);
             }
+
+            // moves index to next word
             start = end;
             end = wordIterator.next();
         }
@@ -87,10 +96,11 @@ public class Preprocessing{
 
         // Goes through each word in list
         for(String word : wordList){
+            // Goes through each pair of characters
             for(int i = 0; i < word.length(); i++){
                 try{
                     // Adds a pair of characters to the ArrayList
-                    // Tells the Compiler to concatenate as string
+                    // Placing the character pairs in alphabetical order
                     if(word.charAt(i) < word.charAt(i+1)) {
                         String pair = String.valueOf("" + word.charAt(i) + word.charAt(i + 1));
                         output.add(pair);
@@ -140,7 +150,7 @@ public class Preprocessing{
         return language.substring(0, language.length()-4)+"Model.txt";
     }
 
-    // Java implementation of argmax in numpy
+    // Java implementation of argmax from numpy
     // Gets the largest value in an array
     private static double argMax(double[] inputArray){
         double temp = 0;
