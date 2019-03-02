@@ -65,9 +65,9 @@ public class Preprocessing{
 
     // Reads File in Locale format
     // and creates an array with each word stored
-    public static ArrayList<String> extractWords(String inputText, Locale currentLocale){
+    public static ArrayList<String> extractWords(String inputText){
         ArrayList<String> wordList = new ArrayList<String>();
-        BreakIterator wordIterator = BreakIterator.getWordInstance(currentLocale);
+        BreakIterator wordIterator = BreakIterator.getWordInstance();
 
         wordIterator.setText(inputText);
         int start = wordIterator.first();

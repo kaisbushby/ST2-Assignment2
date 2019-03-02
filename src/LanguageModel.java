@@ -1,15 +1,36 @@
-import java.util.*;
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-/**
- * This class will handle the learning process of the model.
- * It will calculate the probability of the occurring character pairs and stores it into a file
- * **/
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
-public class Learning{
+public class LanguageModel extends Calculate {
+    private Hashtable<String, Double> probability = new Hashtable<>();
+    private String languageType;
+
+
+    public Hashtable<String, Double> getProbability() {
+        return probability;
+    }
+
+    public void setProbability(Hashtable<String, Double> probability) {
+        this.probability = probability;
+    }
+
+    public void setLanguageType(String languageType) {
+        this.languageType = languageType.replace(".txt", "");
+    }
+
+    public String getLanguageType() {
+        return languageType;
+    }
+
 
     // Converts Character Pair occurrence to probability
-    public static void calculateInitProb(ArrayList<Character> charList, LanguageModel model){
+    public void calculateInitProb(ArrayList<Character> charList){
         // Hash Table to store
         Hashtable<Character, Integer> countingChar = new Hashtable<>();
 
@@ -31,12 +52,12 @@ public class Learning{
             char key = keys.nextElement();
             int value = countingChar.get(key);
 
-            model.getProbability().put(String.valueOf(key), (double)value/listSize);
+            this.probability.put(String.valueOf(key), (double)value/listSize);
         }
     }
 
     // Converts String Pair occurrence to probability
-    public static void calculateTransProb(ArrayList<String> wordList, LanguageModel model){
+    public void calculateTransProb(ArrayList<String> wordList){
         // Hash Table to store the occurrence of character pairs
         Hashtable<String, Integer> countingPairs = new Hashtable<>();
         // Hash table to store the occurrence of pair headers
@@ -69,12 +90,12 @@ public class Learning{
             int value = countingPairs.get(key);
 
             // Stores the probability of the Character pairs
-            model.getProbability().put(key, (double)value/headerCharProb.get(key.charAt(0)));
+            this.probability.put(key, (double)value/headerCharProb.get(key.charAt(0)));
         }
     }
 
     // Writes List to File
-    public static void outputToFile(String filePath, LanguageModel model) {
+    public void outputToFile(String filePath) {
         try {
             // Creates Writer stream with UTF-16
             Writer writer = new OutputStreamWriter(
@@ -82,11 +103,11 @@ public class Learning{
             PrintWriter printWriter = new PrintWriter(writer);
 
             //--------------------------------------------------------------------------------------------
-            Enumeration<String> keys = model.getProbability().keys();
+            Enumeration<String> keys = this.probability.keys();
             // Writes contents of Hashtable to file
             while (keys.hasMoreElements()) {
                 String key = keys.nextElement();
-                Double value = model.getProbability().get(key);
+                Double value = this.probability.get(key);
 
                 printWriter.write(key + " " + value + "\n");
             }
