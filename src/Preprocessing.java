@@ -73,6 +73,7 @@ public class Preprocessing{
         int start = wordIterator.first();
         int end = wordIterator.next();
 
+
         // changes letters to lower case and removes unwanted symbolic characters
         //--------------------------------------------------------------------------------------------
         while (end != BreakIterator.DONE) {
@@ -80,12 +81,15 @@ public class Preprocessing{
             word = word.toLowerCase();
             // Removes white spaces and symbolic characters
             if (Character.isLetter(word.charAt(0)) && word.length() > 1) {
+                word = word.replaceAll("[^a-z]", "");
                 wordList.add(word);
             }
 
             // moves index to next word
             start = end;
             end = wordIterator.next();
+
+
         }
         return wordList;
     }

@@ -16,10 +16,6 @@ public class LanguageModel extends Calculate {
         return probability;
     }
 
-    public void setProbability(Hashtable<String, Double> probability) {
-        this.probability = probability;
-    }
-
     public void setLanguageType(String languageType) {
         this.languageType = languageType.replace(".txt", "");
     }
@@ -27,7 +23,6 @@ public class LanguageModel extends Calculate {
     public String getLanguageType() {
         return languageType;
     }
-
 
     // Converts Character Pair occurrence to probability
     public void calculateInitProb(ArrayList<Character> charList){
@@ -94,9 +89,12 @@ public class LanguageModel extends Calculate {
         }
     }
 
+
+
     // Writes List to File
     public void outputToFile(String filePath) {
         try {
+
             // Creates Writer stream with UTF-16
             Writer writer = new OutputStreamWriter(
                     new FileOutputStream(filePath), StandardCharsets.UTF_16);

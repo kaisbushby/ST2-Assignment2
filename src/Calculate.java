@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * This Section will handle the language models generated from the "Learning" class
+ * This Section will handle the language models
  * It will calculate the probability of a language based on a given text.
  * **/
 
@@ -36,8 +36,6 @@ class Calculate{
         ArrayList<String> wordList = Preprocessing.extractWords(textData);
         ArrayList<Character> initLetterList = Preprocessing.extractInitLetters(wordList);
         ArrayList<String> initPairList = Preprocessing.extractLetterPairs(wordList);
-
-
 
         // 0:English    1:French   2:German    3:Italian   4:Spanish
 
