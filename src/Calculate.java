@@ -16,12 +16,13 @@ class Calculate{
 
     // Initialize hashtable
     static void initModels(ArrayList<LanguageModel> modelList){
-        ArrayList<String> importModelList = Preprocessing.getFileNames("Language Model");
+        ArrayList<String> importModelList = Preprocessing.getFileNames("Models");
         ArrayList<String> probabilityText;
 
+        // Reads model file and assigns the values onto it's corresponding language model
         int counter = 0;
         for(String model : importModelList){
-            probabilityText = Preprocessing.readFile("Language Model/" + model);
+            probabilityText = Preprocessing.readFile("Models/" + model);
             readModels(modelList.get(counter), probabilityText);
 
             counter++;
@@ -77,6 +78,7 @@ class Calculate{
         for(int x = 0; x < identificationValue.length; x++){
             System.out.println(languageName.get(x) + " : " + output[x] + "%");
         }
+        System.out.println("The Identified Language is: " + languageName.get(Preprocessing.getLargestValueIndex(output)));
         System.out.println();
     }
 }

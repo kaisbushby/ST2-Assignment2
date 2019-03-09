@@ -81,6 +81,7 @@ public class Preprocessing{
             word = word.toLowerCase();
             // Removes white spaces and symbolic characters
             if (Character.isLetter(word.charAt(0)) && word.length() > 1) {
+                // Removes all characters apart from a~z
                 word = word.replaceAll("[^a-z]", "");
                 wordList.add(word);
             }
@@ -88,9 +89,8 @@ public class Preprocessing{
             // moves index to next word
             start = end;
             end = wordIterator.next();
-
-
         }
+
         return wordList;
     }
 
@@ -189,4 +189,19 @@ public class Preprocessing{
         return output;
     }
 
+    public static int getLargestValueIndex(double parameter[])
+    {
+        double max = parameter[0];
+        int index = 0;
+
+        for (int i = 0; i < parameter.length; i++)
+        {
+            if (max < parameter[i])
+            {
+                max = parameter[i];
+                index = i;
+            }
+        }
+        return index;
+    }
 }

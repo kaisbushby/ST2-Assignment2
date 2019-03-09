@@ -11,7 +11,6 @@ public class LanguageModel extends Calculate {
     private Hashtable<String, Double> probability = new Hashtable<>();
     private String languageType;
 
-
     public Hashtable<String, Double> getProbability() {
         return probability;
     }
@@ -25,7 +24,7 @@ public class LanguageModel extends Calculate {
     }
 
     // Converts Character Pair occurrence to probability
-    public void calculateInitProb(ArrayList<Character> charList){
+    public void calculateHeaderProbability(ArrayList<Character> charList){
         // Hash Table to store
         Hashtable<Character, Integer> countingChar = new Hashtable<>();
 
@@ -52,7 +51,7 @@ public class LanguageModel extends Calculate {
     }
 
     // Converts String Pair occurrence to probability
-    public void calculateTransProb(ArrayList<String> wordList){
+    public void calculatePairProbability(ArrayList<String> wordList){
         // Hash Table to store the occurrence of character pairs
         Hashtable<String, Integer> countingPairs = new Hashtable<>();
         // Hash table to store the occurrence of pair headers
@@ -89,12 +88,9 @@ public class LanguageModel extends Calculate {
         }
     }
 
-
-
     // Writes List to File
     public void outputToFile(String filePath) {
         try {
-
             // Creates Writer stream with UTF-16
             Writer writer = new OutputStreamWriter(
                     new FileOutputStream(filePath), StandardCharsets.UTF_16);
