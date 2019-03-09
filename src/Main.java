@@ -9,25 +9,8 @@ public class Main
 {
     public static ArrayList<LanguageModel> langModelList = new ArrayList<>();
 
-    // Learns Language specified via directory
-    static void learn(String inputFilePath, String outputFilePath)
-    {
-        LanguageModel model = new LanguageModel();
-        // Pre-processing
-        String fileContent = Preprocessing.readUnicodeFile(inputFilePath);
-        ArrayList<String> wordList = Preprocessing.extractWords(fileContent);
-        ArrayList<Character> initLetterList = Preprocessing.extractInitLetters(wordList);
-        ArrayList<String> initPairList = Preprocessing.extractLetterPairs(wordList);
-
-        // Creates weight values on txt file
-
-        model.calculateHeaderProbability(initLetterList);
-        model.calculatePairProbability(initPairList);
-        model.outputToFile(outputFilePath);
-    }
-
     // Creates weight values for the Languages in the "Language Model" Directory
-    static void learnAll()
+    static void learn()
     {
         // Gets file names at "Learning" directory
         // English.txt
@@ -76,7 +59,7 @@ public class Main
         // learn("Language Text\\English.txt", "Language Model\\EnglishModel.txt");
 
         // Learns all languages in the "Language Text Directory"
-        learnAll();
+        learn();
 
         // Runs the models
         run();
