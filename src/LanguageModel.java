@@ -3,9 +3,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.*;
 
 public class LanguageModel extends Calculate {
     private Hashtable<String, Double> probability = new Hashtable<>();
@@ -91,16 +89,20 @@ public class LanguageModel extends Calculate {
     // Writes List to File
     public void outputToFile(String filePath) {
         try {
+
+            Map<String, Double> treeMap = new TreeMap<>(this.probability);
             // Creates Writer stream with UTF-16
             Writer writer = new OutputStreamWriter(
                     new FileOutputStream(filePath), StandardCharsets.UTF_16);
             PrintWriter printWriter = new PrintWriter(writer);
 
             //--------------------------------------------------------------------------------------------
-            Enumeration<String> keys = this.probability.keys();
+            // Creates a list that holds sorted ket list
+            List<String> sortedKeys = new ArrayList<String>(this.probability.keySet());
+            Collections.sort(sortedKeys);
+
             // Writes contents of Hashtable to file
-            while (keys.hasMoreElements()) {
-                String key = keys.nextElement();
+            for (String key : sortedKeys) {
                 Double value = this.probability.get(key);
 
                 printWriter.write(key + " " + value + "\n");

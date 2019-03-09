@@ -78,7 +78,8 @@ class Calculate{
         for(int x = 0; x < identificationValue.length; x++){
             System.out.println(languageName.get(x) + " : " + output[x] + "%");
         }
-        System.out.println("The Identified Language is: " + languageName.get(Preprocessing.getLargestValueIndex(output)));
+        String predictedLanguage = languageName.get(Preprocessing.getLargestValueIndex(output));
+        System.out.println("Language Identifies as: " + predictedLanguage);
         System.out.println();
     }
 }
