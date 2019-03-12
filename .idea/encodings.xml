@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Models/FrenchModel.txt" charset="UTF-16" />
-    <file url="file://$PROJECT_DIR$/Models/GermanModel.txt" charset="UTF-16" />
-    <file url="file://$PROJECT_DIR$/Models/ItalianModel.txt" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/Models/FrenchModel.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Models/GermanModel.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Models/ItalianModel.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Models/SpanishModel.txt" charset="UTF-8" />
   </component>
 </project>

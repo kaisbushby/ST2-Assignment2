@@ -8,6 +8,7 @@ class Calculate{
     // Reads text data and adds them to the hash table
     private static void readModels(LanguageModel Model, ArrayList<String> inputText){
 
+
         for(String str : inputText){
             String tempString[] = str.split(" ");
             Model.getProbability().put(tempString[0], Double.parseDouble(tempString[1]));

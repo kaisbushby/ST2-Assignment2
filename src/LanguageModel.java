@@ -93,7 +93,7 @@ public class LanguageModel extends Calculate {
             Map<String, Double> treeMap = new TreeMap<>(this.probability);
             // Creates Writer stream with UTF-16
             Writer writer = new OutputStreamWriter(
-                    new FileOutputStream(filePath), StandardCharsets.UTF_16);
+                    new FileOutputStream(filePath), StandardCharsets.UTF_8);
             PrintWriter printWriter = new PrintWriter(writer);
 
             //--------------------------------------------------------------------------------------------

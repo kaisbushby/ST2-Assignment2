@@ -10,13 +10,13 @@ import java.nio.charset.StandardCharsets;
 
 
 public class Preprocessing{
-    // Reads file content in UTF-16 format
+    // Reads file content in UTF-8 format
     public static String readUnicodeFile(String filePath){
         StringBuilder fileContent = new StringBuilder();
         try {
             // Input FIle Stream
             Reader reader = new InputStreamReader(
-                    new FileInputStream(filePath), StandardCharsets.UTF_16);
+                    new FileInputStream(filePath), StandardCharsets.UTF_8);
             BufferedReader bufferedReader = new BufferedReader(reader);
 
             //--------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ public class Preprocessing{
         try {
             // Input File Stream
             Reader reader = new InputStreamReader(
-                    new FileInputStream(filePath), StandardCharsets.UTF_16);
+                    new FileInputStream(filePath), StandardCharsets.UTF_8);
             BufferedReader bufferedReader = new BufferedReader(reader);
 
             //--------------------------------------------------------------------------------------------
