@@ -56,7 +56,7 @@ public class LanguageModel extends Calculate {
         Hashtable<Character, Integer> headerCharProb = new Hashtable<>();
 
         //--------------------------------------------------------------------------------------------
-
+        // Counts occurring character pair count
         for(int i = 0; i < wordList.size(); i++){
             // Counts Character pairs
             if(countingPairs.containsKey(wordList.get(i))) {
@@ -76,6 +76,7 @@ public class LanguageModel extends Calculate {
         //--------------------------------------------------------------------------------------------
         // Extracts Values
         Enumeration<String> keys = countingPairs.keys();
+        int size = countingPairs.size();
         // Converts occurrence count to probability and stores in hashtable
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
@@ -83,6 +84,7 @@ public class LanguageModel extends Calculate {
 
             // Stores the probability of the Character pairs
             this.probability.put(key, (double)value/headerCharProb.get(key.charAt(0)));
+            //this.probability.put(key, (double)value/size);
         }
     }
 

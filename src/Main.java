@@ -34,7 +34,7 @@ public class Main
                 ArrayList<Character> initLetterList = Preprocessing.extractInitLetters(wordList);
                 ArrayList<String> initPairList = Preprocessing.extractLetterPairs(wordList);
 
-                // Creates weight values on txt file
+                // Creates weight values for model file
                 model.calculateHeaderProbability(initLetterList);
                 model.calculatePairProbability(initPairList);
                 model.outputToFile(outputFilePath);
@@ -45,27 +45,28 @@ public class Main
             for (String filename : fileNames) {
                 LanguageModel model = new LanguageModel();
                 model.setLanguageType(filename);
-
                 langModelList.add(model);
             }
+            Calculate.initializeModels(langModelList);
         }
     }
 
     // Detects all the files in Language_Text folder
     static void run()
     {
-        Calculate.initModels(langModelList);
-        Calculate.detectModel("Testing/Unknown1.txt", langModelList);
-        Calculate.detectModel("Testing/Unknown2.txt", langModelList);
-        Calculate.detectModel("Testing/Unknown3.txt", langModelList);
-        Calculate.detectModel("Testing/Unknown4.txt", langModelList);
-        Calculate.detectModel("Testing/Unknown5.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown1.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown2.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown3.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown4.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown5.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown6.txt", langModelList);
+        Calculate.estimateLanguage("Testing/Unknown7.txt", langModelList);
     }
 
     public static void main(String[] args)
     {
         // Learns all languages in the "Language Text Directory"
-        learn(false);
+        learn(true);
 
         // Runs the models
         run();

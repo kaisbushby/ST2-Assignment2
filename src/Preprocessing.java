@@ -82,7 +82,7 @@ public class Preprocessing{
             // Removes white spaces and symbolic characters
             if (Character.isLetter(word.charAt(0)) && word.length() > 1) {
                 // Removes all characters apart from a~z
-                word = word.replaceAll("[^a-z]", "");
+                word = word.replaceAll("[-.'—]", "");
                 wordList.add(word);
             }
 
